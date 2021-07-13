@@ -145,7 +145,7 @@ section:nth-child(2n + 1) {
     height: 12rem;
     width: 12rem;
     margin: auto;
-    margin-top: 0vh;
+    margin-top: -7vh;
 }
 
 #my-image img {
