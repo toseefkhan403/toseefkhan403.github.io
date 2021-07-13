@@ -8,10 +8,8 @@ body {
 /* Body Header */
 
 #body-header {
-    height: 25vh; /*32*/
-    opacity: 0.8;
-    background: #8E0E00;  
-    background: linear-gradient(to right, #1F1C18, #8E0E00); 
+    height: 40vh; /*32*/
+    opacity: 1;
     background: linear-gradient(to right, #1F1C18, #8E0E00); 
     padding-top: 1.2rem;
 }
@@ -82,7 +80,7 @@ body {
     transition: color 0.5s;
     position: relative;
     display: inline-block;
-    margin: 1em;
+    margin: 5em;
     padding: 1em 2em;
     border: 0;
     border-radius: 30px;
@@ -97,8 +95,8 @@ body {
 }
 .btn--cv {
     background-color: transparent;
-    border: 1px solid #8E0E00;
-    color: #8E0E00;
+    border: 1px solid white;
+    color: white;
   }
 
 /*Section Classes*/
@@ -115,7 +113,7 @@ section:nth-child(2n) {
 }
 
 section:nth-child(2n + 1) {
-    background-color: white;
+    background: linear-gradient(to right, #1F1C18, #8E0E00); 
 }
 
 .section-heading {
@@ -126,7 +124,7 @@ section:nth-child(2n + 1) {
 
 .section-heading span {
     font-size: 40px;
-    color: #8E0E00;
+    color: #eb822d;
     display: inline-block;
     padding-top: 10px;
     margin-right: 0.5rem;
@@ -147,7 +145,7 @@ section:nth-child(2n + 1) {
     height: 12rem;
     width: 12rem;
     margin: auto;
-    margin-top: -10vh;
+    margin-top: 0vh;
 }
 
 #my-image img {
@@ -162,7 +160,7 @@ section:nth-child(2n + 1) {
     padding: 10px;
     width: 70%;
     text-align: center;
-    color: grey;
+    color: white;
     line-height: 28px;
     font-size: 1.1rem;
     margin: auto;
@@ -283,7 +281,7 @@ section:nth-child(2n + 1) {
     transform: rotate(90deg);
     margin-top: -25px;
     display: block;
-    color: #8E0E00;
+    color: #eb822d;
 }
 
 .degree {
@@ -505,7 +503,7 @@ a {
 /*common color classes */
 
 .text-highlight {
-    color: #2857a4;
+    color: white;
     font-weight: 600;
 
 }

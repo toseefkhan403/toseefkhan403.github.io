@@ -10,8 +10,6 @@ body {
 #body-header {
     height: 55vh;
     opacity: 0.8;
-    background: #8E0E00;  
-    background: linear-gradient(to right, #1F1C18, #8E0E00); 
     background: linear-gradient(to right, #1F1C18, #8E0E00); 
     padding-top: 1.2rem;
 }
