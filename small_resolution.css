@@ -1,14 +1,14 @@
 body {
     margin: 0px;
     font-family: Poppins;
-    font-size: medium;
+    font-size: large;
 }
 
 
 /* Body Header */
 
 #body-header {
-    height: 55vh;
+    height: 35vh;
     opacity: 0.8;
     background: #8E0E00;  
     background: linear-gradient(to right, #1F1C18, #8E0E00); 
@@ -146,7 +146,7 @@ section:nth-child(2n + 1) {
     height: 12rem;
     width: 12rem;
     margin: auto;
-    margin-top: -17vh;
+    margin-top: -1vh;
 }
 
 #my-image img {
