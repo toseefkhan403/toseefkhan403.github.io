@@ -8,7 +8,7 @@ body {
 /* Body Header */
 
 #body-header {
-    height: 40vh;
+    height: 32vh;
     opacity: 0.8;
     background: #8E0E00;  
     background: linear-gradient(to right, #1F1C18, #8E0E00); 
