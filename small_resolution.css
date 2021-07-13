@@ -1,14 +1,14 @@
 body {
     margin: 0px;
     font-family: Poppins;
-    font-size: large;
+    font-size: medium;
 }
 
 
 /* Body Header */
 
 #body-header {
-    height: 35vh;
+    height: 40vh;
     opacity: 0.8;
     background: #8E0E00;  
     background: linear-gradient(to right, #1F1C18, #8E0E00); 
@@ -57,6 +57,7 @@ body {
 
 #name-social-container {
     margin-top: 7vh;
+    margin-bottom: 7vh;
 }
 
 #my-name {
@@ -146,7 +147,7 @@ section:nth-child(2n + 1) {
     height: 12rem;
     width: 12rem;
     margin: auto;
-    margin-top: -1vh;
+    margin-top: -10vh;
 }
 
 #my-image img {
