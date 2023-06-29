@@ -1,2 +1,0 @@
-# Resume
-Portfolio Website
