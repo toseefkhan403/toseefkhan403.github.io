@@ -3,8 +3,9 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
-  "assets/AssetManifest.json": "5844e116b27e40c8fe5fddb16b980e87",
+  "assets/AssetManifest.json": "b8cf2a500790d9593b643c7e26de6ea9",
 "assets/assets/images/me.jpg": "2a2e0b4611046c6f4c880589f168a16b",
+"assets/assets/Toseef%2520Ali%2520Khan.pdf": "4f2272ec3cfc2cf77650e0ef4e104a28",
 "assets/FontManifest.json": "5504c4e38aba3935ae8c644d8dd735ab",
 "assets/fonts/MaterialIcons-Regular.otf": "95db9098c58fd6db106f1116bae85a0b",
 "assets/NOTICES": "71fbae8f8130fd29a7b13d8ecfdf995e",
@@ -36,9 +37,9 @@ const RESOURCES = {
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "icons/Icon-maskable-192.png": "c457ef57daa1d16f64b27b786ec2ea3c",
 "icons/Icon-maskable-512.png": "301a7604d45b3e739efc881eb04896ea",
-"index.html": "92c7056338fd4ccdd45162d583f06542",
-"/": "92c7056338fd4ccdd45162d583f06542",
-"main.dart.js": "c55972f2dda95bdcf8160db081186f00",
+"index.html": "831ec0033c68cc25d970461a19e0df84",
+"/": "831ec0033c68cc25d970461a19e0df84",
+"main.dart.js": "0dd66144931248f890a9d550ce37fe3d",
 "manifest.json": "e74af8957b5899dc6da961caee768ec9",
 "version.json": "009c9e65172e010890f7f65fde438006"
 };
