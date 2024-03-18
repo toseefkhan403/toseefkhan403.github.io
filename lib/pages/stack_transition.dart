@@ -2,10 +2,12 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:portfolio_design/pages/sections.dart';
 import 'package:portfolio_design/widgets/hover_text.dart';
 import 'package:portfolio_design/pages/project_screen.dart';
 import 'package:portfolio_design/shape_configurations/figure_configuration.dart';
 import 'package:portfolio_design/shape_configurations/shape_configuration.dart';
+import 'package:portfolio_design/widgets/hover_text_underline.dart';
 
 class StackTransition extends StatefulWidget {
   const StackTransition({super.key});
@@ -302,24 +304,22 @@ class _StackTransitionState extends State<StackTransition> {
                           // color: Colors.brown,
                           child: Stack(
                             children: [
-                              _buildShape(
-                                  config!.shape1,
-                                  const Color(0xff0a0a0a),
-                                  'EcoShift',
+                              _buildShape(config!.shape1,
+                                  const Color(0xff0a0a0a), Sections.ecoShift,
                                   initialColor: Colors.white),
-                              _buildShape(
-                                  config!.shape2, const Color(0xff2157a4), 'F',
+                              _buildShape(config!.shape2,
+                                  const Color(0xff2157a4), Sections.slider,
                                   initialColor: Colors.white),
-                              _buildShape(
-                                  config!.shape3, const Color(0xff85cef1), 'G'),
-                              _buildShape(
-                                  config!.shape4, const Color(0xffffe31b), 'H'),
-                              _buildShape(
-                                  config!.shape5, const Color(0xff65bc4d), 'I'),
-                              _buildShape(
-                                  config!.shape6, const Color(0xffcdcccc), 'F'),
-                              _buildShape(
-                                  config!.shape7, const Color(0xff9bce51), 'K'),
+                              _buildShape(config!.shape3,
+                                  const Color(0xff85cef1), Sections.zeeve),
+                              _buildShape(config!.shape4,
+                                  const Color(0xffffe31b), Sections.phaeton),
+                              _buildShape(config!.shape5,
+                                  const Color(0xff65bc4d), Sections.about),
+                              _buildShape(config!.shape6,
+                                  const Color(0xffcdcccc), Sections.dcomm),
+                              _buildShape(config!.shape7,
+                                  const Color(0xff9bce51), Sections.legacy),
                             ],
                           ),
                         ),
@@ -327,16 +327,20 @@ class _StackTransitionState extends State<StackTransition> {
                     }),
                   ),
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(bottom: 12.0),
-                  child: Text('Made with Flutter by Toseef Ali Khan'),
-                )
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 12.0),
+                  child: HoverTextUnderline([
+                    HyperlinkText(
+                        text: 'Made with Flutter by Toseef Ali Khan',
+                        link: '/about')
+                  ]),
+                ),
               ],
             ),
     );
   }
 
-  Widget _buildShape(ShapeConfiguration shape, Color color, String link,
+  Widget _buildShape(ShapeConfiguration shape, Color color, Sections section,
       {Color initialColor = Colors.black}) {
     return AnimatedPositioned(
       duration: const Duration(milliseconds: 600),
@@ -364,7 +368,7 @@ class _StackTransitionState extends State<StackTransition> {
                       opaque: false,
                       pageBuilder: (context, animation, secondaryAnimation) {
                         return ProjectScreen(
-                            link, color, initialColor, shape.shape);
+                            section, color, initialColor, shape.shape);
                       },
                       transitionsBuilder:
                           (context, animation, secondaryAnimation, child) {
@@ -382,7 +386,9 @@ class _StackTransitionState extends State<StackTransition> {
               },
               child: ClipPath(
                   clipper: ShapeBorderClipper(shape: shape.shape),
-                  child: HoverText(visibleText: link, textColor: initialColor)),
+                  child: HoverText(
+                      visibleText: section.name.toUpperCase(),
+                      textColor: initialColor)),
             ),
           ),
         ),
