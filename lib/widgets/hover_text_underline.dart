@@ -6,9 +6,10 @@ import 'package:url_launcher/url_launcher.dart';
 class HoverTextUnderline extends StatefulWidget {
   final List<HyperlinkText> textSpans;
   final Color textColor;
+  final TextAlign textAlign;
 
   const HoverTextUnderline(this.textSpans,
-      {super.key, this.textColor = Colors.black});
+      {super.key, this.textColor = Colors.black, this.textAlign = TextAlign.center});
 
   @override
   State<HoverTextUnderline> createState() => _HoverTextUnderlineState();
@@ -34,9 +35,9 @@ class _HoverTextUnderlineState extends State<HoverTextUnderline> {
         style: GoogleFonts.oswald(
           decoration: TextDecoration.underline,
           color: widget.textColor.withOpacity(_isHovered ? 1 : 0.6),
-          fontSize: 18,
+          fontSize: 16,
         ),
-        textAlign: TextAlign.center,
+        textAlign: widget.textAlign,
         duration: const Duration(milliseconds: 300),
         child: Text.rich(
           TextSpan(
