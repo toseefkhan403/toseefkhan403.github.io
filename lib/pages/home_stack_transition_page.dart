@@ -333,8 +333,14 @@ class _HomeStackTransitionPageState extends State<HomeStackTransitionPage> {
                   padding: const EdgeInsets.only(bottom: 12.0),
                   child: HoverTextUnderline([
                     HyperlinkText(
-                        text: 'Made with Flutter by Toseef Ali Khan',
-                        link: '/about')
+                      text: 'Made with Flutter by Toseef Ali Khan',
+                      link: '/about',
+                      callback: () => animateToProjectDetailPage(
+                          Projects.about,
+                          const Color(0xff65bc4d),
+                          Colors.black,
+                          const RoundedRectangleBorder()),
+                    )
                   ]),
                 ),
               ],
@@ -360,32 +366,8 @@ class _HomeStackTransitionPageState extends State<HomeStackTransitionPage> {
             curve: Curves.ease,
             decoration: ShapeDecoration(color: color, shape: shape.shape),
             child: GestureDetector(
-              onTap: () {
-                _timer.cancel();
-                Navigator.push(
-                    context,
-                    PageRouteBuilder(
-                      transitionDuration: const Duration(seconds: 1),
-                      reverseTransitionDuration: const Duration(seconds: 1),
-                      opaque: false,
-                      pageBuilder: (context, animation, secondaryAnimation) {
-                        return ProjectDetailPage(
-                            section, color, initialColor, shape.shape);
-                      },
-                      transitionsBuilder:
-                          (context, animation, secondaryAnimation, child) {
-                        final curvedAnimation = CurvedAnimation(
-                          parent: animation,
-                          curve: Curves.easeInOut,
-                        );
-
-                        return FadeTransition(
-                            opacity: Tween<double>(begin: 0, end: 1)
-                                .animate(curvedAnimation),
-                            child: child);
-                      },
-                    )).then((value) => startTimer());
-              },
+              onTap: () => animateToProjectDetailPage(
+                  section, color, initialColor, shape.shape),
               child: ClipPath(
                   clipper: ShapeBorderClipper(shape: shape.shape),
                   child: HoverText(
@@ -405,5 +387,31 @@ class _HomeStackTransitionPageState extends State<HomeStackTransitionPage> {
       config = figures[randomIndex];
       setState(() {});
     });
+  }
+
+  animateToProjectDetailPage(
+      Projects section, Color color, Color initialColor, ShapeBorder shape) {
+    _timer.cancel();
+    Navigator.push(
+        context,
+        PageRouteBuilder(
+          transitionDuration: const Duration(seconds: 1),
+          reverseTransitionDuration: const Duration(seconds: 1),
+          opaque: false,
+          pageBuilder: (context, animation, secondaryAnimation) {
+            return ProjectDetailPage(section, color, initialColor, shape);
+          },
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            final curvedAnimation = CurvedAnimation(
+              parent: animation,
+              curve: Curves.easeInOut,
+            );
+
+            return FadeTransition(
+                opacity:
+                    Tween<double>(begin: 0, end: 1).animate(curvedAnimation),
+                child: child);
+          },
+        )).then((value) => startTimer());
   }
 }

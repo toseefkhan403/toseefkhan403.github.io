@@ -59,8 +59,8 @@ class FeatureVideo extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Image.asset('images/${section.name}1.gif'),
           Image.asset('images/${section.name}2.gif'),
+          Image.asset('images/${section.name}3.gif'),
         ],
       ),
     );

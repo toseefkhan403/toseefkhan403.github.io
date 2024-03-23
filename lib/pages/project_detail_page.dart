@@ -3,7 +3,6 @@ import 'package:portfolio_design/pages/project_widgets/feature_description.dart'
 import 'package:portfolio_design/pages/project_widgets/feature_image.dart';
 import 'package:portfolio_design/pages/project_widgets/feature_video.dart';
 
-import '../widgets/hover_text_underline.dart';
 import '../widgets/rotating_icon_button.dart';
 import 'home_stack_transition_page.dart';
 

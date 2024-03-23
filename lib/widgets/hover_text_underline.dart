@@ -9,7 +9,9 @@ class HoverTextUnderline extends StatefulWidget {
   final TextAlign textAlign;
 
   const HoverTextUnderline(this.textSpans,
-      {super.key, this.textColor = Colors.black, this.textAlign = TextAlign.center});
+      {super.key,
+      this.textColor = Colors.black,
+      this.textAlign = TextAlign.center});
 
   @override
   State<HoverTextUnderline> createState() => _HoverTextUnderlineState();
@@ -55,7 +57,7 @@ class _HoverTextUnderlineState extends State<HoverTextUnderline> {
         final ts = TextSpan(
             text: hyperText.text,
             recognizer: TapGestureRecognizer()
-              ..onTap = () => launchNewPage(hyperText.link!));
+              ..onTap = () => launchNewPage(hyperText));
         list.add(ts);
       } else {
         final ts = TextSpan(
@@ -71,14 +73,16 @@ class _HoverTextUnderlineState extends State<HoverTextUnderline> {
     return list;
   }
 
-  void launchNewPage(String link) async {
-    if (link.contains('http')) {
-      final Uri url = Uri.parse(link);
+  void launchNewPage(HyperlinkText hyperText) async {
+    if (hyperText.link!.contains('http')) {
+      final Uri url = Uri.parse(hyperText.link!);
       if (!await launchUrl(url)) {
         throw Exception('Could not launch $url');
       }
     } else {
-      // todo
+      if (hyperText.callback != null) {
+        hyperText.callback!.call();
+      }
     }
   }
 }
@@ -86,6 +90,7 @@ class _HoverTextUnderlineState extends State<HoverTextUnderline> {
 class HyperlinkText {
   final String text;
   final String? link;
+  final Function()? callback;
 
-  HyperlinkText({required this.text, this.link});
+  HyperlinkText({required this.text, this.link, this.callback});
 }

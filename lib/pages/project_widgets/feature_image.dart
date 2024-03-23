@@ -108,7 +108,7 @@ class FeatureImage extends StatelessWidget {
         ),
         Expanded(
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
             child: Image.asset('images/${section.name}1.gif'),
           ),
         ),
