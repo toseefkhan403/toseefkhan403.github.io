@@ -58,6 +58,7 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                       }
                     },
                     isLeft: true,
+                    textColor: widget.textColor,
                   ),
                   Expanded(
                     child: PageView(
@@ -73,13 +74,18 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                           color: widget.color,
                           textColor: widget.textColor,
                         ),
-                        FeatureVideo(section: widget.section,
-                          color: widget.color,),
-                        FeatureDescription(
-                          section: widget.section,
-                          color: widget.color,
-                          textColor: widget.textColor,
-                        ),
+                        if (widget.section != Projects.about)
+                          FeatureVideo(
+                            section: widget.section,
+                            color: widget.color,
+                            textColor: widget.textColor,
+                          ),
+                        if (widget.section != Projects.about)
+                          FeatureDescription(
+                            section: widget.section,
+                            color: widget.color,
+                            textColor: widget.textColor,
+                          ),
                       ],
                     ),
                   ),
@@ -89,6 +95,14 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                         Navigator.pop(context);
                         return;
                       }
+
+                      // about section has only 2 pages for now
+                      if (widget.section == Projects.about &&
+                          currentIndex == 1) {
+                        Navigator.pop(context);
+                        return;
+                      }
+
                       if (currentIndex == 0) {
                         _scrollController.animateTo(
                             _scrollController.position.maxScrollExtent,
@@ -99,6 +113,7 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                           duration: const Duration(milliseconds: 1200),
                           curve: Curves.easeInOutCubic);
                     },
+                    textColor: widget.textColor,
                   ),
                 ],
               ),

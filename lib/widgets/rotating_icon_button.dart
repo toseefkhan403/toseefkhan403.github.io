@@ -4,9 +4,13 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 class RotatingIconButton extends StatefulWidget {
   final Function() onPressed;
   final bool isLeft;
+  final Color textColor;
 
   const RotatingIconButton(
-      {super.key, required this.onPressed, this.isLeft = false});
+      {super.key,
+      required this.onPressed,
+      this.isLeft = false,
+      this.textColor = Colors.black});
 
   @override
   State<RotatingIconButton> createState() => _RotatingIconButtonState();
@@ -34,7 +38,7 @@ class _RotatingIconButtonState extends State<RotatingIconButton> {
           icon: Icon(
             FeatherIcons.plus,
             size: 32,
-            color: Colors.white.withOpacity(0.9),
+            color: widget.textColor.withOpacity(0.25),
           )),
     );
   }

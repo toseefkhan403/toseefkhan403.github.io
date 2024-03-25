@@ -306,22 +306,15 @@ class _HomeStackTransitionPageState extends State<HomeStackTransitionPage> {
                           // color: Colors.brown,
                           child: Stack(
                             children: [
-                              _buildShape(config!.shape1,
-                                  const Color(0xff0a0a0a), Projects.ecoShift,
+                              _buildShape(config!.shape1, Projects.parallax,
                                   initialColor: Colors.white),
-                              _buildShape(config!.shape2,
-                                  const Color(0xff2157a4), Projects.parallax,
+                              _buildShape(config!.shape2, Projects.ecoShift,
                                   initialColor: Colors.white),
-                              _buildShape(config!.shape3,
-                                  const Color(0xff85cef1), Projects.zeeve),
-                              _buildShape(config!.shape4,
-                                  const Color(0xffffe31b), Projects.phaeton),
-                              _buildShape(config!.shape5,
-                                  const Color(0xff65bc4d), Projects.about),
-                              _buildShape(config!.shape6,
-                                  const Color(0xffcdcccc), Projects.dcomm),
-                              _buildShape(config!.shape7,
-                                  const Color(0xff9bce51), Projects.legacy),
+                              _buildShape(config!.shape3, Projects.zeeve),
+                              _buildShape(config!.shape4, Projects.about),
+                              _buildShape(config!.shape5, Projects.dcomm),
+                              _buildShape(config!.shape6, Projects.legacy),
+                              _buildShape(config!.shape7, Projects.phaeton),
                             ],
                           ),
                         ),
@@ -336,10 +329,11 @@ class _HomeStackTransitionPageState extends State<HomeStackTransitionPage> {
                       text: 'Made with Flutter by Toseef Ali Khan',
                       link: '/about',
                       callback: () => animateToProjectDetailPage(
-                          Projects.about,
-                          const Color(0xff65bc4d),
-                          Colors.black,
-                          const RoundedRectangleBorder()),
+                        Projects.about,
+                        getColorFromSection(Projects.about),
+                        Colors.black,
+                        config!.shape4.shape,
+                      ),
                     )
                   ]),
                 ),
@@ -348,8 +342,9 @@ class _HomeStackTransitionPageState extends State<HomeStackTransitionPage> {
     );
   }
 
-  Widget _buildShape(ShapeConfiguration shape, Color color, Projects section,
+  Widget _buildShape(ShapeConfiguration shape, Projects section,
       {Color initialColor = Colors.black}) {
+    final Color color = getColorFromSection(section);
     return AnimatedPositioned(
       duration: const Duration(milliseconds: 600),
       top: shape.top,
@@ -413,5 +408,26 @@ class _HomeStackTransitionPageState extends State<HomeStackTransitionPage> {
                 child: child);
           },
         )).then((value) => startTimer());
+  }
+
+  Color getColorFromSection(Projects section) {
+    switch (section) {
+      case Projects.ecoShift:
+        return const Color(0xff2157a4);
+      case Projects.parallax:
+        return const Color(0xff0a0a0a);
+      case Projects.zeeve:
+        return const Color(0xff85cef1);
+      case Projects.phaeton:
+        return const Color(0xff9bce51);
+      case Projects.dcomm:
+        return const Color(0xff65bc4d);
+      case Projects.about:
+        return const Color(0xffffe31b);
+      case Projects.legacy:
+        return const Color(0xffcdcccc);
+      default:
+        return const Color(0xff0a0a0a);
+    }
   }
 }

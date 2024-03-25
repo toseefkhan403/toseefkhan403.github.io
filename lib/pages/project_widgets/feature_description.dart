@@ -19,7 +19,25 @@ class FeatureDescription extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: color,
-      child: getFeatureDescriptionFromProject(context),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 20),
+            child: InkWell(
+              onTap: () => Navigator.pop(context),
+              child: Text(
+                section.name.toUpperCase(),
+                style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    color: textColor,
+                    fontSize: 14),
+              ),
+            ),
+          ),
+          Expanded(child: getFeatureDescriptionFromProject(context)),
+        ],
+      ),
     );
   }
 
@@ -30,15 +48,15 @@ class FeatureDescription extends StatelessWidget {
       case Projects.parallax:
         return featureDescriptionParallax(context);
       case Projects.zeeve:
-        return featureDescriptionEcoShift(context);
+        return featureDescriptionZeeve(context);
       case Projects.phaeton:
-        return featureDescriptionEcoShift(context);
+        return featureDescriptionPhaeton(context);
       case Projects.dcomm:
-        return featureDescriptionEcoShift(context);
+        return featureDescriptionDComm(context);
       case Projects.about:
         return featureDescriptionEcoShift(context);
       case Projects.legacy:
-        return featureDescriptionEcoShift(context);
+        return featureDescriptionLegacy(context);
     }
   }
 
@@ -91,6 +109,135 @@ class FeatureDescription extends StatelessWidget {
           textAlign: TextAlign.left,
         ),
       ),
+    );
+  }
+
+  featureDescriptionZeeve(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    return Center(
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+            vertical: 10, horizontal: width > 1000 ? width * 0.2 : 10),
+        child: HoverTextUnderline(
+          [
+            HyperlinkText(
+                text:
+                    "I've contributed to enhancing the Zeeve mobile app by integrating support for "),
+            HyperlinkText(
+                text: 'appchains', link: 'https://www.zeeve.io/appchains/'),
+            HyperlinkText(text: ' and '),
+            HyperlinkText(
+                text: 'rollups', link: 'https://www.zeeve.io/rollups/'),
+            HyperlinkText(
+              text:
+                  '. This includes, but is not limited to, integrating zkSync Hyperchains, Polygon CDK, Avalanche Subnet, and Parachains. Additionally, I\'ve implemented support for permissive chains such as Hyperledger Besu and Fabric.',
+            ),
+          ],
+          textColor: textColor,
+          textAlign: TextAlign.left,
+        ),
+      ),
+    );
+  }
+
+  featureDescriptionPhaeton(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    return Center(
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+            vertical: 10, horizontal: width > 1000 ? width * 0.2 : 10),
+        child: HoverTextUnderline(
+          [
+            HyperlinkText(
+                text:
+                    "One of the main challenges we faced was the integration of "),
+            HyperlinkText(
+                text: 'WalletConnect', link: 'https://walletconnect.com/'),
+            HyperlinkText(
+                text:
+                    ' to establish a secure channel between the Phaeton Wallet and dApps on the Phaeton ecosystem. Since Flutter support was very limited, we had to come up with creative ways to use WalletConnect\'s libraries in the Phaeton Wallet. Try it out '),
+            HyperlinkText(
+                text: 'here.',
+                link:
+                    'https://appetize.io/embed/ag_ihj33wjg6a7efmoh4mqv5fcmoa?autoplay=true'),
+          ],
+          textColor: textColor,
+          textAlign: TextAlign.left,
+        ),
+      ),
+    );
+  }
+
+  featureDescriptionDComm(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    return Center(
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+            vertical: 10, horizontal: width > 1000 ? width * 0.2 : 10),
+        child: HoverTextUnderline(
+          [
+            HyperlinkText(text: 'During my time at Zeeve, I worked on the '),
+            HyperlinkText(
+                text: 'DComm Wallet',
+                link:
+                    'https://appetize.io/embed/ag_ihj33wjg6a7efmoh4mqv5fcmoa?autoplay=true'),
+            HyperlinkText(
+                text:
+                    ' for mobile to allow users to create wallet, store DComm assets and tokens, stake tokens for rewards & send NFTs and tokens. One of the challenges was managing the cross chain complexity(Asset chain, Authority chain, Action chain) and cross chain transfers on the DComm blockchain.'),
+          ],
+          textColor: textColor,
+          textAlign: TextAlign.left,
+        ),
+      ),
+    );
+  }
+
+  featureDescriptionLegacy(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    return Row(
+      children: [
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: HoverTextUnderline(
+              [
+                HyperlinkText(
+                  text: 'Novela App',
+                  link:
+                      'https://play.google.com/store/apps/details?id=com.pandog.arctic_pups',
+                ),
+                HyperlinkText(
+                    text:
+                        ' is a chat stories app made using Flutter and Firebase with features such as: Google, Facebook and email authentication, dark and light mode with rich animations, Google ads and in-app purchases & payment integration using Paytm API. The app has over 1k installs.'),
+              ],
+              textColor: textColor,
+              textAlign: TextAlign.left,
+            ),
+          ),
+        ),
+        Expanded(
+          child: Row(
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                      vertical: width > 600 ? 60 : 10, horizontal: 10),
+                  child: Image.network(
+                      'https://camo.githubusercontent.com/e2a26d3fa4d4260a121ac8213cdb04e84ca80b73c19cf24ce14a454205401dfb/68747470733a2f2f706c61792d6c682e676f6f676c6575736572636f6e74656e742e636f6d2f44522d36744549445561334735614c77644d7573576274504f554b57575331744b436959306248717a464f76476c56456736424c69616c5f53772d70676d6430594541713d77313336362d683630382d7277'),
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                      vertical: width > 600 ? 60 : 10, horizontal: 10),
+                  child: Image.network(
+                      'https://camo.githubusercontent.com/f134873c17e4e502605702952533954f1178e5e2270aa7c4a8399572fa61e492/68747470733a2f2f706c61792d6c682e676f6f676c6575736572636f6e74656e742e636f6d2f5966685052657379764c51456971567a633746423655334a723044384a4544614e4354744e4c725f6f464b426f324e65776e45504e54562d4b624966434f72396b673d77313336362d683630382d7277'),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
