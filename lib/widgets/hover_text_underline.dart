@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../models/hyperlink_text.dart';
+
 class HoverTextUnderline extends StatefulWidget {
   final List<HyperlinkText> textSpans;
   final Color textColor;
@@ -11,7 +13,7 @@ class HoverTextUnderline extends StatefulWidget {
   const HoverTextUnderline(this.textSpans,
       {super.key,
       this.textColor = Colors.black,
-      this.textAlign = TextAlign.center});
+      this.textAlign = TextAlign.left});
 
   @override
   State<HoverTextUnderline> createState() => _HoverTextUnderlineState();
@@ -85,12 +87,4 @@ class _HoverTextUnderlineState extends State<HoverTextUnderline> {
       }
     }
   }
-}
-
-class HyperlinkText {
-  final String text;
-  final String? link;
-  final Function()? callback;
-
-  HyperlinkText({required this.text, this.link, this.callback});
 }

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:portfolio_design/pages/home_stack_transition_page.dart';
+import 'package:portfolio_design/widgets/utils.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../models/hyperlink_text.dart';
 import '../../widgets/hover_text_underline.dart';
 
 class FeatureImage extends StatelessWidget {
@@ -62,22 +64,16 @@ class FeatureImage extends StatelessWidget {
   }
 
   featureImageEcoShift(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.width;
     return Column(
       children: [
-        Center(
-          child: Padding(
-            padding: EdgeInsets.fromLTRB(10, width > 1000 ? 60 : 10, 10, 10),
-            child: Image.asset(
-              'images/${section.name}1.gif',
-              height: height * 0.6,
-            ),
+        Padding(
+          padding: tenPercentVerticalPadding(context),
+          child: imageWithPlaceholder(
+            'images/${section.name}1.gif',
           ),
         ),
         Padding(
-          padding: EdgeInsets.symmetric(
-              vertical: 10, horizontal: width > 1000 ? width * 0.2 : 10),
+          padding: hoverTextUnderlinePadding(context),
           child: HoverTextUnderline(
             [
               HyperlinkText(
@@ -93,7 +89,6 @@ class FeatureImage extends StatelessWidget {
                       ' organised by Flutter. The game places the power of choice in your hands, reshaping the world based on your decisions. The player encounters dilemmas mirroring real-life choices, with changing storylines. In our daily choices lies the power to create a healthier planet. Small decisions, when combined, have a profound impact. This game aims to raise awareness about the consequences of our actions, inspiring positive choices for a greener and more sustainable future.'),
             ],
             textColor: textColor,
-            textAlign: TextAlign.left,
           ),
         ),
       ],
@@ -101,45 +96,54 @@ class FeatureImage extends StatelessWidget {
   }
 
   featureImageParallax(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.all(10),
-            child: HoverTextUnderline(
-              [
-                HyperlinkText(
-                  text: 'Parallax Cards',
-                  link: 'https://pub.dev/packages/parallax_cards',
-                ),
-                HyperlinkText(
-                    text:
-                        ' is an open source flutter package to achieve the scrolling parallax effect on background images with customizable options for card overlays.'),
-                HyperlinkText(
-                    text:
-                        " This package simplifies the process of implementing a realistic parallax effect in both vertical and horizontal scroll views."),
-              ],
-              textColor: textColor,
-              textAlign: TextAlign.left,
-            ),
+    final children = [
+      Expanded(
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: HoverTextUnderline(
+            [
+              HyperlinkText(
+                text: 'Parallax Cards',
+                link: 'https://pub.dev/packages/parallax_cards',
+              ),
+              HyperlinkText(
+                  text:
+                      ' is an open source flutter package to achieve the scrolling parallax effect on background images with customizable options for card overlays.'),
+              HyperlinkText(
+                  text:
+                      " This package simplifies the process of implementing a realistic parallax effect in both vertical and horizontal scroll views."),
+            ],
+            textColor: textColor,
           ),
         ),
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-            child: Image.asset('images/${section.name}1.gif'),
-          ),
+      ),
+      Expanded(
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: imageWithPlaceholder('images/${section.name}1.gif',
+              progressColor: textColor),
         ),
-      ],
-    );
+      ),
+    ];
+
+    return responsiveFlexWidget(context, children);
   }
 
   featureImageZeeve(BuildContext context) {
-    return Row(
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+    return Column(
       children: [
+        Padding(
+          padding: tenPercentVerticalPadding(context),
+          child: imageWithPlaceholder(
+            'images/${section.name}1.jpg',
+            height: width > 1000 ? height * 0.5 : null,
+          ),
+        ),
         Expanded(
           child: Padding(
-            padding: const EdgeInsets.all(10),
+            padding: hoverTextUnderlinePadding(context),
             child: HoverTextUnderline(
               [
                 HyperlinkText(
@@ -169,15 +173,7 @@ class FeatureImage extends StatelessWidget {
                 HyperlinkText(text: ' devices.'),
               ],
               textColor: textColor,
-              textAlign: TextAlign.left,
             ),
-          ),
-        ),
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-            child: Image.network(
-                'https://lh3.googleusercontent.com/pLQg8K4eO50VbW9HJbPL6tjydJHjo6HLbeC3XwkSdcnOJYd7E6QtiPNqVTYkUOMhiTQ4'),
           ),
         ),
       ],
@@ -189,18 +185,15 @@ class FeatureImage extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
     return Column(
       children: [
-        Center(
-          child: Padding(
-            padding: EdgeInsets.fromLTRB(10, width > 1000 ? 60 : 10, 10, 10),
-            child: Image.asset(
-              'images/${section.name}1.png',
-              height: height * 0.6,
-            ),
+        Padding(
+          padding: tenPercentVerticalPadding(context),
+          child: imageWithPlaceholder(
+            'images/${section.name}1.png',
+            height: width > 1000 ? height * 0.5 : null,
           ),
         ),
         Padding(
-          padding: EdgeInsets.symmetric(
-              vertical: 10, horizontal: width > 1000 ? width * 0.2 : 10),
+          padding: hoverTextUnderlinePadding(context),
           child: HoverTextUnderline(
             [
               HyperlinkText(
@@ -230,7 +223,6 @@ class FeatureImage extends StatelessWidget {
               HyperlinkText(text: ' devices.'),
             ],
             textColor: textColor,
-            textAlign: TextAlign.left,
           ),
         ),
       ],
@@ -238,110 +230,126 @@ class FeatureImage extends StatelessWidget {
   }
 
   featureImageDComm(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
-    return Row(
-      children: [
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.all(10),
-            child: HoverTextUnderline(
-              [
-                HyperlinkText(
-                  text: 'DComm Blockchain',
-                  link: 'https://www.dcomm.community/',
-                ),
-                HyperlinkText(
-                    text:
-                        ' has a mission to become the go-to blockchain for real world asset `tokenization`. At the heart of the business and technology infrastructure lies a cutting edge, third generation blockchain.'),
-              ],
-              textColor: textColor,
-              textAlign: TextAlign.left,
-            ),
+    final children = [
+      Expanded(
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: HoverTextUnderline(
+            [
+              HyperlinkText(
+                text: 'DComm Blockchain',
+                link: 'https://www.dcomm.community/',
+              ),
+              HyperlinkText(
+                  text:
+                      ' has a mission to become the go-to blockchain for real world asset `tokenization`. At the heart of the business and technology infrastructure lies a cutting edge, third generation blockchain.'),
+            ],
+            textColor: textColor,
           ),
         ),
-        Expanded(
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-                vertical: width > 600 ? 60 : 10, horizontal: 10),
-            child: Image.asset('images/${section.name}1.png'),
+      ),
+      Expanded(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+          child: Row(
+            children: [
+              Expanded(
+                child: imageWithPlaceholder('images/${section.name}1.png'),
+              ),
+              const SizedBox(
+                width: 20,
+              ),
+              Expanded(
+                child: imageWithPlaceholder('images/${section.name}2.png'),
+              ),
+            ],
           ),
         ),
-        Expanded(
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-                vertical: width > 600 ? 60 : 10, horizontal: 10),
-            child: Image.asset('images/${section.name}2.png'),
-          ),
-        ),
-      ],
-    );
+      ),
+    ];
+
+    return responsiveFlexWidget(context, children);
   }
 
   featureImageAbout(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
-    return Row(
-      children: [
-        Expanded(
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-                vertical: width > 1000 ? 60 : 10, horizontal: 10),
-            child: Image.asset('images/me.jpg'),
+    final children = [
+      Padding(
+        padding: EdgeInsets.all(isMobileBrowser(context) ? 10 : 50),
+        child: imageWithPlaceholder('images/me.jpg', height: width * 0.4),
+      ),
+      Expanded(
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(0, 10, width > 1000 ? 80 : 10, 10),
+          child: Column(
+            mainAxisAlignment: isMobileBrowser(context)
+                ? MainAxisAlignment.start
+                : MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8),
+                child: Text(
+                  "Hi, I am Toseef Ali Khan, a Mobile App Developer at Zeeve"
+                      .toUpperCase(),
+                  style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      color: textColor,
+                      fontSize: width > 1000 ? 40 : 20),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 8),
+                child: Text(
+                  "I'm an experienced mobile developer with a three-year background specializing in Flutter. My passion lies in creating applications that are not only functional but also elegant and user-friendly. With expertise in Flutter, I've successfully developed high-performance cross-platform apps which you can find in this portfolio. This portfolio is also built using Flutter and it draws design inspiration from Karina Sirqueira.",
+                  style: TextStyle(color: textColor, fontSize: 16),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: Row(
+                  children: [
+                    _socialIconButton(FeatherIcons.download,
+                        'assets/toseef_resume.pdf', 'View Resume'),
+                    _socialIconButton(FeatherIcons.linkedin,
+                        'https://www.linkedin.com/in/toseef-khan/', 'Linkedin'),
+                    _socialIconButton(FeatherIcons.github,
+                        'https://github.com/toseefkhan403/', 'Github'),
+                    _socialIconButton(FeatherIcons.twitter,
+                        'https://twitter.com/toseefkhan_', 'X/Twitter'),
+                    _socialIconButton(FeatherIcons.instagram,
+                        'https://www.instagram.com/toseeficator/', 'Instagram'),
+                  ],
+                ),
+              )
+            ],
           ),
         ),
-        Expanded(
-          child: Padding(
-            padding: EdgeInsets.fromLTRB(0, 10, width > 1000 ? 80 : 10, 10),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8),
-                  child: Text(
-                    "Hi, I am Toseef Ali Khan, a Mobile App Developer at Zeeve"
-                        .toUpperCase(),
-                    style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        color: textColor,
-                        fontSize: 40),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 8),
-                  child: Text(
-                    "I'm an experienced mobile developer with a three-year background specializing in Flutter. My passion lies in creating applications that are not only functional but also elegant and user-friendly. With expertise in Flutter, I've successfully developed high-performance cross-platform apps which you can find in this portfolio. This portfolio is also built using Flutter and it draws design inspiration from Karina Sirqueira.",
-                    style: TextStyle(color: textColor, fontSize: 16),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10),
-                  child: Row(
-                    children: [
-                      socialIconButton(FeatherIcons.download,
-                          'assets/toseef_resume.pdf', 'View Resume'),
-                      socialIconButton(
-                          FeatherIcons.linkedin,
-                          'https://www.linkedin.com/in/toseef-khan/',
-                          'Linkedin'),
-                      socialIconButton(FeatherIcons.github,
-                          'https://github.com/toseefkhan403/', 'Github'),
-                      socialIconButton(FeatherIcons.twitter,
-                          'https://twitter.com/toseefkhan_', 'X/Twitter'),
-                      socialIconButton(
-                          FeatherIcons.instagram,
-                          'https://www.instagram.com/toseeficator/',
-                          'Instagram'),
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
-        ),
-      ],
+      ),
+    ];
+
+    return Flex(
+      direction: isMobileBrowser(context) ? Axis.vertical : Axis.horizontal,
+      children: children,
     );
   }
 
-  socialIconButton(IconData iconData, String uri, String tooltip) => Padding(
+  featureImageLegacy(BuildContext context) {
+    return Center(
+      child: Padding(
+        padding: hoverTextUnderlinePadding(context),
+        child: HoverTextUnderline(
+          [
+            HyperlinkText(
+                text:
+                    "This section contains links to the older projects I've worked on that are no longer being maintained."),
+          ],
+          textColor: textColor,
+        ),
+      ),
+    );
+  }
+
+  _socialIconButton(IconData iconData, String uri, String tooltip) => Padding(
         padding: const EdgeInsets.only(right: 10),
         child: IconButton(
             onPressed: () async {
@@ -364,23 +372,4 @@ class FeatureImage extends StatelessWidget {
               ),
             )),
       );
-
-  featureImageLegacy(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
-    return Center(
-      child: Padding(
-        padding: EdgeInsets.symmetric(
-            vertical: 10, horizontal: width > 1000 ? width * 0.2 : 10),
-        child: HoverTextUnderline(
-          [
-            HyperlinkText(
-                text:
-                    "This section contains links to the older projects I've worked on that are no longer being maintained."),
-          ],
-          textColor: textColor,
-          textAlign: TextAlign.left,
-        ),
-      ),
-    );
-  }
 }

@@ -4,9 +4,12 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:portfolio_design/widgets/hover_text.dart';
 import 'package:portfolio_design/pages/project_detail_page.dart';
-import 'package:portfolio_design/shape_configurations/figure_configuration.dart';
-import 'package:portfolio_design/shape_configurations/shape_configuration.dart';
+import 'package:portfolio_design/models/figure_configuration.dart';
+import 'package:portfolio_design/models/shape_configuration.dart';
 import 'package:portfolio_design/widgets/hover_text_underline.dart';
+import 'package:portfolio_design/widgets/utils.dart';
+
+import '../models/hyperlink_text.dart';
 
 enum Projects { ecoShift, parallax, zeeve, phaeton, dcomm, about, legacy }
 
@@ -55,224 +58,8 @@ class _HomeStackTransitionPageState extends State<HomeStackTransitionPage> {
   }
 
   initShapes() {
-    final height = MediaQuery.of(context).size.height / 1.5;
-    var width = min(height * 1.618, MediaQuery.of(context).size.width) * 0.14;
-    const double minTopMargin = 10.0;
-    const double minLeftMargin = 45.0;
-
-    final figure1 = FigureConfiguration(
-        ShapeConfiguration(width * 4, width * 4, minTopMargin, width * 3,
-            const CircleBorder()),
-        ShapeConfiguration(width * 2, width * 2, width * 2 + minTopMargin,
-            width * 3 + width * 2, const CircleBorder()),
-        ShapeConfiguration(width, width, minTopMargin + width * 3,
-            width * 3 * 2, const CircleBorder()),
-        ShapeConfiguration(width * 2, width * 2, minTopMargin * 2, width * 1.6,
-            const CircleBorder()),
-        ShapeConfiguration(width * 2, width * 2, width * 1.6 + minTopMargin * 2,
-            minLeftMargin, const CircleBorder()),
-        ShapeConfiguration(width, width, width * 2 + minTopMargin,
-            width * 2 + minLeftMargin, const CircleBorder()),
-        ShapeConfiguration(width, width, width * 0.8,
-            minLeftMargin + width * 0.2, const CircleBorder()));
-
-    final figure2 = FigureConfiguration(
-        ShapeConfiguration(width, width * 3, minTopMargin + width,
-            minLeftMargin + width * 1.5, const RoundedRectangleBorder()),
-        ShapeConfiguration(width, width * 3.5, minTopMargin * 3,
-            minLeftMargin + width * 5, const RoundedRectangleBorder()),
-        ShapeConfiguration(width / 2, width * 2, minTopMargin + width * 2,
-            minLeftMargin + width * 6, const RoundedRectangleBorder()),
-        ShapeConfiguration(width, width * 2.5, minTopMargin,
-            minLeftMargin + width / 2, const RoundedRectangleBorder()),
-        ShapeConfiguration(width / 2, width * 1.5, minTopMargin + width,
-            minLeftMargin + width * 2.5, const RoundedRectangleBorder()),
-        ShapeConfiguration(width * 2, width * 4, minTopMargin,
-            minLeftMargin + width * 3, const RoundedRectangleBorder()),
-        ShapeConfiguration(width / 2, width * 1.5, minTopMargin, minLeftMargin,
-            const RoundedRectangleBorder()));
-
-    final figure3 = FigureConfiguration(
-        ShapeConfiguration(
-            width * 2,
-            width * 4,
-            minTopMargin,
-            minLeftMargin + width * 4.5,
-            RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(width * 2))),
-        ShapeConfiguration(
-            width / 2,
-            width,
-            minTopMargin + width * 1.5,
-            minLeftMargin + width * 3,
-            RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(width / 2))),
-        ShapeConfiguration(
-            width,
-            width * 3.5,
-            minTopMargin * 3,
-            minLeftMargin + width * 3.5,
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(width))),
-        ShapeConfiguration(
-            width,
-            width * 2.5,
-            minTopMargin,
-            minLeftMargin + width / 2,
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(width))),
-        ShapeConfiguration(
-            width,
-            width * 3,
-            minTopMargin + width,
-            minLeftMargin + width * 1.5,
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(width))),
-        ShapeConfiguration(
-            width / 2,
-            width * 2,
-            minTopMargin + width * 2,
-            minLeftMargin + width * 2.5,
-            RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(width / 2))),
-        ShapeConfiguration(
-            width / 2,
-            width * 1.5,
-            minTopMargin,
-            minLeftMargin,
-            RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(width / 2))));
-
-    final figure4 = FigureConfiguration(
-        ShapeConfiguration(width * 3.5, width * 4, minTopMargin,
-            minLeftMargin + width * 3, const RoundedRectangleBorder()),
-        ShapeConfiguration(width * 2, width * 2, minTopMargin + width * 2,
-            minLeftMargin + width * 4.5, const RoundedRectangleBorder()),
-        ShapeConfiguration(width, width, minTopMargin + width * 3,
-            minLeftMargin + width * 5.5, const RoundedRectangleBorder()),
-        ShapeConfiguration(width * 2, width * 2, minTopMargin,
-            minLeftMargin + width, const RoundedRectangleBorder()),
-        ShapeConfiguration(width * 2, width * 2, minTopMargin + width * 2,
-            minLeftMargin, const RoundedRectangleBorder()),
-        ShapeConfiguration(width, width * 2, minTopMargin + width * 2,
-            minLeftMargin + width * 2, const RoundedRectangleBorder()),
-        ShapeConfiguration(width, width * 2, minTopMargin, minLeftMargin,
-            const RoundedRectangleBorder()));
-
-    final figure5 = FigureConfiguration(
-        ShapeConfiguration(
-            width * 3.5,
-            width * 4,
-            minTopMargin,
-            minLeftMargin + width * 3,
-            RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(width / 2))),
-        ShapeConfiguration(
-            width * 2,
-            width * 2,
-            minTopMargin + width * 2,
-            minLeftMargin + width * 4.5,
-            RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(width / 2))),
-        ShapeConfiguration(
-            width,
-            width,
-            minTopMargin + width * 3,
-            minLeftMargin + width * 5.5,
-            RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(width / 2))),
-        ShapeConfiguration(
-            width * 2,
-            width * 2,
-            minTopMargin,
-            minLeftMargin + width,
-            RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(width / 2))),
-        ShapeConfiguration(
-            width * 2,
-            width * 2,
-            minTopMargin + width * 2,
-            minLeftMargin,
-            RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(width / 2))),
-        ShapeConfiguration(
-            width,
-            width * 2,
-            minTopMargin + width * 2,
-            minLeftMargin + width * 2,
-            RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(width / 2))),
-        ShapeConfiguration(
-            width,
-            width * 2,
-            minTopMargin,
-            minLeftMargin,
-            RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(width / 2))));
-
-    final figure6 = FigureConfiguration(
-        ShapeConfiguration(
-            width * 3.5,
-            width * 4,
-            minTopMargin,
-            minLeftMargin + width * 3,
-            RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-              topRight: Radius.circular(width * 1.5),
-            ))),
-        ShapeConfiguration(
-            width * 2,
-            width * 2,
-            minTopMargin + width * 2,
-            minLeftMargin + width * 4.5,
-            RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(width),
-            ))),
-        ShapeConfiguration(
-            width,
-            width,
-            minTopMargin + width * 3,
-            minLeftMargin + width * 5.5,
-            RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(width / 2),
-            ))),
-        ShapeConfiguration(width * 2, width * 2, minTopMargin,
-            minLeftMargin + width, const CircleBorder()),
-        ShapeConfiguration(
-            width * 2,
-            width * 2,
-            minTopMargin + width * 2,
-            minLeftMargin,
-            RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-              topRight: Radius.circular(width),
-              bottomRight: Radius.circular(width),
-            ))),
-        ShapeConfiguration(
-            width,
-            width * 2,
-            minTopMargin + width * 2,
-            minLeftMargin + width * 2,
-            RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(width),
-            ))),
-        ShapeConfiguration(
-            width,
-            width * 2,
-            minTopMargin,
-            minLeftMargin,
-            RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(width),
-            ))));
-
     figures.clear();
-    figures.add(figure1);
-    figures.add(figure2);
-    figures.add(figure3);
-    figures.add(figure4);
-    figures.add(figure5);
-    figures.add(figure6);
+    figures.addAll(initializeShapes(context));
   }
 
   @override
@@ -299,10 +86,10 @@ class _HomeStackTransitionPageState extends State<HomeStackTransitionPage> {
                         onExit: (_) {
                           _shouldMorph = true;
                         },
-                        child: Container(
+                        child: SizedBox(
                           width: height * 1.618,
                           height: height,
-                          margin: const EdgeInsets.only(right: 10),
+                          // margin: const EdgeInsets.only(right: 10),
                           // color: Colors.brown,
                           child: Stack(
                             children: [
@@ -408,26 +195,5 @@ class _HomeStackTransitionPageState extends State<HomeStackTransitionPage> {
                 child: child);
           },
         )).then((value) => startTimer());
-  }
-
-  Color getColorFromSection(Projects section) {
-    switch (section) {
-      case Projects.ecoShift:
-        return const Color(0xff2157a4);
-      case Projects.parallax:
-        return const Color(0xff0a0a0a);
-      case Projects.zeeve:
-        return const Color(0xff85cef1);
-      case Projects.phaeton:
-        return const Color(0xff9bce51);
-      case Projects.dcomm:
-        return const Color(0xff65bc4d);
-      case Projects.about:
-        return const Color(0xffffe31b);
-      case Projects.legacy:
-        return const Color(0xffcdcccc);
-      default:
-        return const Color(0xff0a0a0a);
-    }
   }
 }

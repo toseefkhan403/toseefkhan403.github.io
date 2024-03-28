@@ -1,4 +1,4 @@
-import 'package:portfolio_design/shape_configurations/shape_configuration.dart';
+import 'package:portfolio_design/models/shape_configuration.dart';
 
 class FigureConfiguration {
   ShapeConfiguration shape1;

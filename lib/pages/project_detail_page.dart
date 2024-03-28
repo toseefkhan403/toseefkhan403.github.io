@@ -4,6 +4,7 @@ import 'package:portfolio_design/pages/project_widgets/feature_image.dart';
 import 'package:portfolio_design/pages/project_widgets/feature_video.dart';
 
 import '../widgets/rotating_icon_button.dart';
+import '../widgets/utils.dart';
 import 'home_stack_transition_page.dart';
 
 class ProjectDetailPage extends StatefulWidget {
@@ -134,7 +135,7 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
             widget.section.name.toUpperCase(),
             style: TextStyle(
                 fontWeight: FontWeight.bold,
-                height: 0.9,
+                height: isMobileBrowser(context) ? 1.5 : 0.9,
                 color: widget.textColor,
                 fontSize: MediaQuery.of(context).size.shortestSide - 25),
           ),

@@ -1,9 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:portfolio_design/pages/home_stack_transition_page.dart';
 
+import '../../models/hyperlink_text.dart';
 import '../../widgets/hover_text_underline.dart';
+import '../../widgets/utils.dart';
 
 class FeatureVideo extends StatelessWidget {
   final Projects section;
@@ -62,44 +62,60 @@ class FeatureVideo extends StatelessWidget {
   }
 
   featureVideoEcoShift(context) {
-    final height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.width;
     return Center(
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: width > 600 ? 60 : 10),
-        child: SizedBox(
-            height: height * 0.7,
-            child: Image.asset('images/${section.name}2.gif')),
+        padding:
+            EdgeInsets.symmetric(vertical: !isMobileBrowser(context) ? 60 : 10),
+        child: imageWithPlaceholder('images/${section.name}2.gif'),
       ),
     );
   }
 
   twoMobileGifs(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
     return Padding(
-      padding:
-          EdgeInsets.symmetric(vertical: width > 600 ? 60 : 10, horizontal: 10),
+      padding: EdgeInsets.symmetric(
+          vertical: !isMobileBrowser(context) ? 60 : 10, horizontal: 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Image.asset('images/${section.name}2.gif'),
-          Image.asset('images/${section.name}3.gif'),
+          isMobileBrowser(context) ? const SizedBox.shrink() : const Spacer(),
+          Expanded(
+            child: imageWithPlaceholder('images/${section.name}2.gif'),
+          ),
+          const SizedBox(
+            width: 10,
+          ),
+          Expanded(
+            child: imageWithPlaceholder('images/${section.name}3.gif'),
+          ),
+          isMobileBrowser(context) ? const SizedBox.shrink() : const Spacer(),
         ],
       ),
     );
   }
 
   threeMobileGifs(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
     return Padding(
-      padding:
-          EdgeInsets.symmetric(vertical: width > 600 ? 60 : 10, horizontal: 10),
+      padding: EdgeInsets.all(!isMobileBrowser(context) ? 50 : 5),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Image.asset('images/${section.name}3.gif'),
-          Image.asset('images/${section.name}5.gif'),
-          Image.asset('images/${section.name}4.gif'),
+          Expanded(
+            child: imageWithPlaceholder('images/${section.name}3.gif'),
+          ),
+          const SizedBox(
+            width: 10,
+          ),
+          isMobileBrowser(context)
+              ? const SizedBox.shrink()
+              : Expanded(
+                  child: imageWithPlaceholder('images/${section.name}5.gif'),
+                ),
+          const SizedBox(
+            width: 10,
+          ),
+          Expanded(
+            child: imageWithPlaceholder('images/${section.name}4.gif'),
+          ),
         ],
       ),
     );
@@ -107,26 +123,22 @@ class FeatureVideo extends StatelessWidget {
 
   featureVideoLegacy(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.width;
     return Column(
       children: [
-        Center(
-          child: Padding(
-            padding: EdgeInsets.fromLTRB(10, width > 1000 ? 60 : 10, 10, 10),
-            child: Image.asset(
-              'images/${section.name}1.png',
-              height: height * 0.6,
-            ),
+        Padding(
+          padding: tenPercentVerticalPadding(context),
+          child: imageWithPlaceholder(
+            'images/${section.name}1.png',
+            height: !isMobileBrowser(context) ? height * 0.5 : null,
           ),
         ),
         Padding(
-          padding: EdgeInsets.symmetric(
-              vertical: 10, horizontal: width > 1000 ? width * 0.2 : 10),
+          padding: hoverTextUnderlinePadding(context),
           child: HoverTextUnderline(
             [
               HyperlinkText(
                 text:
-                    'This is one of the earlier portfolio project I built using Flutter with integrated emulators in the browser so that anyone can try out the apps I\'ve worked on without installing them on their device. I integrated a service called ',
+                    'This is one of the earlier portfolio projects I built using Flutter with integrated emulators in the browser so that anyone can try out the apps I\'ve worked on without installing them on their device. I integrated a service called ',
               ),
               HyperlinkText(text: 'Appetize.io', link: 'https://appetize.io/'),
               HyperlinkText(
@@ -138,7 +150,6 @@ class FeatureVideo extends StatelessWidget {
                   link: 'https://toseefkhan403.github.io/Portfolio/'),
             ],
             textColor: textColor,
-            textAlign: TextAlign.left,
           ),
         ),
       ],
