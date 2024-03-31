@@ -66,7 +66,8 @@ class FeatureVideo extends StatelessWidget {
       child: Padding(
         padding:
             EdgeInsets.symmetric(vertical: !isMobileBrowser(context) ? 60 : 10),
-        child: imageWithPlaceholder('images/${section.name}2.gif'),
+        child: imageWithPlaceholder('images/${section.name}2.gif',
+            progressColor: textColor),
       ),
     );
   }
@@ -80,13 +81,15 @@ class FeatureVideo extends StatelessWidget {
         children: [
           isMobileBrowser(context) ? const SizedBox.shrink() : const Spacer(),
           Expanded(
-            child: imageWithPlaceholder('images/${section.name}2.gif'),
+            child: imageWithPlaceholder('images/${section.name}2.gif',
+                progressColor: textColor),
           ),
           const SizedBox(
             width: 10,
           ),
           Expanded(
-            child: imageWithPlaceholder('images/${section.name}3.gif'),
+            child: imageWithPlaceholder('images/${section.name}3.gif',
+                progressColor: textColor),
           ),
           isMobileBrowser(context) ? const SizedBox.shrink() : const Spacer(),
         ],

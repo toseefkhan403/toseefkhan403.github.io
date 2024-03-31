@@ -68,9 +68,8 @@ class FeatureImage extends StatelessWidget {
       children: [
         Padding(
           padding: tenPercentVerticalPadding(context),
-          child: imageWithPlaceholder(
-            'images/${section.name}1.gif',
-          ),
+          child: imageWithPlaceholder('images/${section.name}1.gif',
+              progressColor: textColor),
         ),
         Padding(
           padding: hoverTextUnderlinePadding(context),

@@ -1,5 +1,5 @@
 name: portfolio_design
-description: "A new Flutter project."
+description: "Portfolio website built in Flutter"
 publish_to: 'none'
 
 version: 1.0.0+1
@@ -28,6 +28,8 @@ flutter:
   assets:
     - assets/
     - assets/images/
+    - assets/display/
+
   # fonts:
   #   - family: Schyler
   #     fonts:
