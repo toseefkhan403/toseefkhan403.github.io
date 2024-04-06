@@ -47,7 +47,12 @@ class _HomeStackTransitionPageState extends State<HomeStackTransitionPage> {
       initShapes();
       config = figures[5];
       setState(() {});
+      Future.delayed(const Duration(seconds: 1), () {
+        config = figures[2];
+        setState(() {});
+      });
     });
+
     super.initState();
   }
 

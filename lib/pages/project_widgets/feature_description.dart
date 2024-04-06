@@ -66,11 +66,12 @@ class FeatureDescription extends StatelessWidget {
       context,
       [
         HyperlinkText(
-            text: 'EcoShift Chronicles',
-            link: 'https://devpost.com/software/ecoshift-chronicles'),
-        HyperlinkText(
             text:
-                ' is an engaging 2D-pixel art game where players make choices influencing the environment. Every decision impacts the world, presenting dilemmas influenced by angels and devils, and shaping branching storylines. It combines vibrant graphics, music, and real-life choices for an immersive experience. Players have the option to select distinct characters, save their game progress, and experience gameplay in Japanese.'),
+                'EcoShift Chronicles is an engaging 2D-pixel art game built using Flutter and Flame where players make choices influencing the environment. The project has been chosen as one of the '),
+        HyperlinkText(text: 'top 20 submissions', link: 'https://medium.com/flutter/global-gamers-challenge-top-20-revealed-1982879b48d0'),
+        HyperlinkText(text: ' of the '),
+        HyperlinkText(text: 'Global Gamers Challenge', link: 'https://flutter.dev/global-gamers'),
+        HyperlinkText(text: ' organised by Flutter.'),
       ],
     );
   }

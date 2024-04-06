@@ -64,12 +64,17 @@ class FeatureImage extends StatelessWidget {
   }
 
   featureImageEcoShift(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
     return Column(
       children: [
         Padding(
           padding: tenPercentVerticalPadding(context),
-          child: imageWithPlaceholder('images/${section.name}1.gif',
-              progressColor: textColor),
+          child: imageWithPlaceholder(
+            'images/${section.name}1.gif',
+            progressColor: textColor,
+            height: width > 1000 ? height * 0.5 : null,
+          ),
         ),
         Padding(
           padding: hoverTextUnderlinePadding(context),
@@ -79,13 +84,13 @@ class FeatureImage extends StatelessWidget {
                 text: 'EcoShift Chronicles',
                 link: 'https://devpost.com/software/ecoshift-chronicles',
               ),
-              HyperlinkText(text: ' is my submission to the '),
+              HyperlinkText(text: ' is one of the top 20 projects of the '),
               HyperlinkText(
                   text: 'Global Gamers Challenge',
-                  link: 'https://flutter.dev/global-gamers'),
+                  link: 'https://youtu.be/AqCMFhb2wrA?si=erygKGRQGF0Wdtee'),
               HyperlinkText(
                   text:
-                      ' organised by Flutter. The game places the power of choice in your hands, reshaping the world based on your decisions. The player encounters dilemmas mirroring real-life choices, with changing storylines. In our daily choices lies the power to create a healthier planet. Small decisions, when combined, have a profound impact. This game aims to raise awareness about the consequences of our actions, inspiring positive choices for a greener and more sustainable future.'),
+                      ' organised by Flutter. The game places the power of choice in your hands, reshaping the world based on your decisions. The player encounters dilemmas mirroring real-life choices, with changing storyline.'),
             ],
             textColor: textColor,
           ),

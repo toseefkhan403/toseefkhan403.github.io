@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio_design/widgets/utils.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../models/hyperlink_text.dart';
@@ -39,7 +40,7 @@ class _HoverTextUnderlineState extends State<HoverTextUnderline> {
         style: GoogleFonts.oswald(
           decoration: TextDecoration.underline,
           color: widget.textColor.withOpacity(_isHovered ? 1 : 0.6),
-          fontSize: 16,
+          fontSize: isMobileBrowser(context) ? 16 : 20,
         ),
         textAlign: widget.textAlign,
         duration: const Duration(milliseconds: 300),
@@ -58,6 +59,9 @@ class _HoverTextUnderlineState extends State<HoverTextUnderline> {
       if (hyperText.link != null) {
         final ts = TextSpan(
             text: hyperText.text,
+            style: hyperText.link == "/about"
+                ? const TextStyle(fontSize: 18)
+                : null,
             recognizer: TapGestureRecognizer()
               ..onTap = () => launchNewPage(hyperText));
         list.add(ts);

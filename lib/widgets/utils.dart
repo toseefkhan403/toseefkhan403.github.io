@@ -8,21 +8,24 @@ import '../models/shape_configuration.dart';
 
 imageWithPlaceholder(String path,
         {Color progressColor = Colors.black, double? height}) =>
-    Image.asset(
-      path,
+    SizedBox(
       height: height,
-      frameBuilder: (BuildContext context, Widget child, int? frame,
-          bool wasSynchronouslyLoaded) {
-        if (wasSynchronouslyLoaded || frame != null) {
-          return child;
-        } else {
-          return Center(
-            child: CircularProgressIndicator(
-              color: progressColor,
-            ),
-          );
-        }
-      },
+      child: Image.asset(
+        path,
+        height: height,
+        frameBuilder: (BuildContext context, Widget child, int? frame,
+            bool wasSynchronouslyLoaded) {
+          if (wasSynchronouslyLoaded || frame != null) {
+            return child;
+          } else {
+            return Center(
+              child: CircularProgressIndicator(
+                color: progressColor,
+              ),
+            );
+          }
+        },
+      ),
     );
 
 bool isMobileBrowser(context) => MediaQuery.of(context).size.width < 600;
