@@ -9,6 +9,13 @@ class FigureConfiguration {
   ShapeConfiguration shape6;
   ShapeConfiguration shape7;
 
-  FigureConfiguration(this.shape1, this.shape2, this.shape3, this.shape4,
-      this.shape5, this.shape6, this.shape7);
+  FigureConfiguration({
+    required this.shape1,
+    required this.shape2,
+    required this.shape3,
+    required this.shape4,
+    required this.shape5,
+    required this.shape6,
+    required this.shape7,
+  });
 }

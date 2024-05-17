@@ -31,11 +31,11 @@ imageWithPlaceholder(String path,
 bool isMobileBrowser(context) => MediaQuery.of(context).size.width < 600;
 
 responsiveFlexWidget(BuildContext context, List<Widget> children) => Flex(
-    direction: isMobileBrowser(context) ? Axis.vertical : Axis.horizontal,
-    children: [
-      isMobileBrowser(context) ? children[1] : children[0],
-      isMobileBrowser(context) ? children[0] : children[1],
-    ]);
+        direction: isMobileBrowser(context) ? Axis.vertical : Axis.horizontal,
+        children: [
+          isMobileBrowser(context) ? children[1] : children[0],
+          isMobileBrowser(context) ? children[0] : children[1],
+        ]);
 
 hoverTextUnderlinePadding(context) {
   final width = MediaQuery.of(context).size.width;
@@ -74,215 +74,374 @@ Color getColorFromSection(Projects section) {
 
 List<FigureConfiguration> initializeShapes(BuildContext context) {
   final height = MediaQuery.of(context).size.height / 1.5;
-  var width = min(height * 1.618, MediaQuery.of(context).size.width) * 0.14;
+  final unit = min(height * 1.618, MediaQuery.of(context).size.width) * 0.14;
   const double minTopMargin = 10.0;
   final double minLeftMargin = isMobileBrowser(context) ? 20.0 : 45.0;
 
   final figure1 = FigureConfiguration(
-      ShapeConfiguration(
-          width * 4, width * 4, minTopMargin, width * 3, const CircleBorder()),
-      ShapeConfiguration(width * 2, width * 2, width * 2 + minTopMargin,
-          width * 3 + width * 2, const CircleBorder()),
-      ShapeConfiguration(width, width, minTopMargin + width * 3, width * 3 * 2,
-          const CircleBorder()),
-      ShapeConfiguration(width * 2, width * 2, minTopMargin * 2, width * 1.6,
-          const CircleBorder()),
-      ShapeConfiguration(width * 2, width * 2, width * 1.6 + minTopMargin * 2,
-          minLeftMargin, const CircleBorder()),
-      ShapeConfiguration(width, width, width * 2 + minTopMargin,
-          width * 2 + minLeftMargin, const CircleBorder()),
-      ShapeConfiguration(width, width, width * 0.8, minLeftMargin + width * 0.2,
-          const CircleBorder()));
+    shape1: ShapeConfiguration(
+      width: unit * 4,
+      height: unit * 4,
+      top: minTopMargin,
+      left: unit * 3,
+      shape: const CircleBorder(),
+    ),
+    shape2: ShapeConfiguration(
+      width: unit * 2,
+      height: unit * 2,
+      top: unit * 2 + minTopMargin,
+      left: unit * 3 + unit * 2,
+      shape: const CircleBorder(),
+    ),
+    shape3: ShapeConfiguration(
+      width: unit,
+      height: unit,
+      top: minTopMargin + unit * 3,
+      left: unit * 3 * 2,
+      shape: const CircleBorder(),
+    ),
+    shape4: ShapeConfiguration(
+      width: unit * 2,
+      height: unit * 2,
+      top: minTopMargin * 2,
+      left: unit * 1.6,
+      shape: const CircleBorder(),
+    ),
+    shape5: ShapeConfiguration(
+      width: unit * 2,
+      height: unit * 2,
+      top: unit * 1.6 + minTopMargin * 2,
+      left: minLeftMargin,
+      shape: const CircleBorder(),
+    ),
+    shape6: ShapeConfiguration(
+      width: unit,
+      height: unit,
+      top: unit * 2 + minTopMargin,
+      left: unit * 2 + minLeftMargin,
+      shape: const CircleBorder(),
+    ),
+    shape7: ShapeConfiguration(
+      width: unit,
+      height: unit,
+      top: unit * 0.8,
+      left: minLeftMargin + unit * 0.2,
+      shape: const CircleBorder(),
+    ),
+  );
 
   final figure2 = FigureConfiguration(
-      ShapeConfiguration(width, width * 3, minTopMargin + width,
-          minLeftMargin + width * 1.5, const RoundedRectangleBorder()),
-      ShapeConfiguration(width, width * 3.5, minTopMargin * 3,
-          minLeftMargin + width * 5, const RoundedRectangleBorder()),
-      ShapeConfiguration(width / 2, width * 2, minTopMargin + width * 2,
-          minLeftMargin + width * 6, const RoundedRectangleBorder()),
-      ShapeConfiguration(width, width * 2.5, minTopMargin,
-          minLeftMargin + width / 2, const RoundedRectangleBorder()),
-      ShapeConfiguration(width / 2, width * 1.5, minTopMargin + width,
-          minLeftMargin + width * 2.5, const RoundedRectangleBorder()),
-      ShapeConfiguration(width * 2, width * 4, minTopMargin,
-          minLeftMargin + width * 3, const RoundedRectangleBorder()),
-      ShapeConfiguration(width / 2, width * 1.5, minTopMargin, minLeftMargin,
-          const RoundedRectangleBorder()));
+    shape1: ShapeConfiguration(
+      width: unit,
+      height: unit * 3,
+      top: minTopMargin + unit,
+      left: minLeftMargin + unit * 1.5,
+      shape: const RoundedRectangleBorder(),
+    ),
+    shape2: ShapeConfiguration(
+      width: unit,
+      height: unit * 3.5,
+      top: minTopMargin * 3,
+      left: minLeftMargin + unit * 5,
+      shape: const RoundedRectangleBorder(),
+    ),
+    shape3: ShapeConfiguration(
+      width: unit / 2,
+      height: unit * 2,
+      top: minTopMargin + unit * 2,
+      left: minLeftMargin + unit * 6,
+      shape: const RoundedRectangleBorder(),
+    ),
+    shape4: ShapeConfiguration(
+      width: unit,
+      height: unit * 2.5,
+      top: minTopMargin,
+      left: minLeftMargin + unit / 2,
+      shape: const RoundedRectangleBorder(),
+    ),
+    shape5: ShapeConfiguration(
+      width: unit / 2,
+      height: unit * 1.5,
+      top: minTopMargin + unit,
+      left: minLeftMargin + unit * 2.5,
+      shape: const RoundedRectangleBorder(),
+    ),
+    shape6: ShapeConfiguration(
+      width: unit * 2,
+      height: unit * 4,
+      top: minTopMargin,
+      left: minLeftMargin + unit * 3,
+      shape: const RoundedRectangleBorder(),
+    ),
+    shape7: ShapeConfiguration(
+      width: unit / 2,
+      height: unit * 1.5,
+      top: minTopMargin,
+      left: minLeftMargin,
+      shape: const RoundedRectangleBorder(),
+    ),
+  );
 
   final figure3 = FigureConfiguration(
-      ShapeConfiguration(
-          width * 2,
-          width * 4,
-          minTopMargin,
-          minLeftMargin + width * 4.5,
-          RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(width * 2))),
-      ShapeConfiguration(
-          width / 2,
-          width,
-          minTopMargin + width * 1.5,
-          minLeftMargin + width * 3,
-          RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(width / 2))),
-      ShapeConfiguration(
-          width,
-          width * 3.5,
-          minTopMargin * 3,
-          minLeftMargin + width * 3.5,
-          RoundedRectangleBorder(borderRadius: BorderRadius.circular(width))),
-      ShapeConfiguration(
-          width,
-          width * 2.5,
-          minTopMargin,
-          minLeftMargin + width / 2,
-          RoundedRectangleBorder(borderRadius: BorderRadius.circular(width))),
-      ShapeConfiguration(
-          width,
-          width * 3,
-          minTopMargin + width,
-          minLeftMargin + width * 1.5,
-          RoundedRectangleBorder(borderRadius: BorderRadius.circular(width))),
-      ShapeConfiguration(
-          width / 2,
-          width * 2,
-          minTopMargin + width * 2,
-          minLeftMargin + width * 2.5,
-          RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(width / 2))),
-      ShapeConfiguration(
-          width / 2,
-          width * 1.5,
-          minTopMargin,
-          minLeftMargin,
-          RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(width / 2))));
+    shape1: ShapeConfiguration(
+      width: unit * 2,
+      height: unit * 4,
+      top: minTopMargin,
+      left: minLeftMargin + unit * 4.5,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(unit * 2),
+      ),
+    ),
+    shape2: ShapeConfiguration(
+      width: unit / 2,
+      height: unit,
+      top: minTopMargin + unit * 1.5,
+      left: minLeftMargin + unit * 3,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(unit / 2),
+      ),
+    ),
+    shape3: ShapeConfiguration(
+      width: unit,
+      height: unit * 3.5,
+      top: minTopMargin * 3,
+      left: minLeftMargin + unit * 3.5,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(unit),
+      ),
+    ),
+    shape4: ShapeConfiguration(
+      width: unit,
+      height: unit * 2.5,
+      top: minTopMargin,
+      left: minLeftMargin + unit / 2,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(unit),
+      ),
+    ),
+    shape5: ShapeConfiguration(
+      width: unit,
+      height: unit * 3,
+      top: minTopMargin + unit,
+      left: minLeftMargin + unit * 1.5,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(unit),
+      ),
+    ),
+    shape6: ShapeConfiguration(
+      width: unit / 2,
+      height: unit * 2,
+      top: minTopMargin + unit * 2,
+      left: minLeftMargin + unit * 2.5,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(unit / 2),
+      ),
+    ),
+    shape7: ShapeConfiguration(
+      width: unit / 2,
+      height: unit * 1.5,
+      top: minTopMargin,
+      left: minLeftMargin,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(unit / 2),
+      ),
+    ),
+  );
 
   final figure4 = FigureConfiguration(
-      ShapeConfiguration(width * 3.5, width * 4, minTopMargin,
-          minLeftMargin + width * 3, const RoundedRectangleBorder()),
-      ShapeConfiguration(width * 2, width * 2, minTopMargin + width * 2,
-          minLeftMargin + width * 4.5, const RoundedRectangleBorder()),
-      ShapeConfiguration(width, width, minTopMargin + width * 3,
-          minLeftMargin + width * 5.5, const RoundedRectangleBorder()),
-      ShapeConfiguration(width * 2, width * 2, minTopMargin,
-          minLeftMargin + width, const RoundedRectangleBorder()),
-      ShapeConfiguration(width * 2, width * 2, minTopMargin + width * 2,
-          minLeftMargin, const RoundedRectangleBorder()),
-      ShapeConfiguration(width, width * 2, minTopMargin + width * 2,
-          minLeftMargin + width * 2, const RoundedRectangleBorder()),
-      ShapeConfiguration(width, width * 2, minTopMargin, minLeftMargin,
-          const RoundedRectangleBorder()));
+    shape1: ShapeConfiguration(
+      width: unit * 3.5,
+      height: unit * 4,
+      top: minTopMargin,
+      left: minLeftMargin + unit * 3,
+      shape: const RoundedRectangleBorder(),
+    ),
+    shape2: ShapeConfiguration(
+      width: unit * 2,
+      height: unit * 2,
+      top: minTopMargin + unit * 2,
+      left: minLeftMargin + unit * 4.5,
+      shape: const RoundedRectangleBorder(),
+    ),
+    shape3: ShapeConfiguration(
+      width: unit,
+      height: unit,
+      top: minTopMargin + unit * 3,
+      left: minLeftMargin + unit * 5.5,
+      shape: const RoundedRectangleBorder(),
+    ),
+    shape4: ShapeConfiguration(
+      width: unit * 2,
+      height: unit * 2,
+      top: minTopMargin,
+      left: minLeftMargin + unit,
+      shape: const RoundedRectangleBorder(),
+    ),
+    shape5: ShapeConfiguration(
+      width: unit * 2,
+      height: unit * 2,
+      top: minTopMargin + unit * 2,
+      left: minLeftMargin,
+      shape: const RoundedRectangleBorder(),
+    ),
+    shape6: ShapeConfiguration(
+      width: unit,
+      height: unit * 2,
+      top: minTopMargin + unit * 2,
+      left: minLeftMargin + unit * 2,
+      shape: const RoundedRectangleBorder(),
+    ),
+    shape7: ShapeConfiguration(
+      width: unit,
+      height: unit * 2,
+      top: minTopMargin,
+      left: minLeftMargin,
+      shape: const RoundedRectangleBorder(),
+    ),
+  );
 
   final figure5 = FigureConfiguration(
-      ShapeConfiguration(
-          width * 3.5,
-          width * 4,
-          minTopMargin,
-          minLeftMargin + width * 3,
-          RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(width / 2))),
-      ShapeConfiguration(
-          width * 2,
-          width * 2,
-          minTopMargin + width * 2,
-          minLeftMargin + width * 4.5,
-          RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(width / 2))),
-      ShapeConfiguration(
-          width,
-          width,
-          minTopMargin + width * 3,
-          minLeftMargin + width * 5.5,
-          RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(width / 2))),
-      ShapeConfiguration(
-          width * 2,
-          width * 2,
-          minTopMargin,
-          minLeftMargin + width,
-          RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(width / 2))),
-      ShapeConfiguration(
-          width * 2,
-          width * 2,
-          minTopMargin + width * 2,
-          minLeftMargin,
-          RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(width / 2))),
-      ShapeConfiguration(
-          width,
-          width * 2,
-          minTopMargin + width * 2,
-          minLeftMargin + width * 2,
-          RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(width / 2))),
-      ShapeConfiguration(
-          width,
-          width * 2,
-          minTopMargin,
-          minLeftMargin,
-          RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(width / 2))));
+    shape1: ShapeConfiguration(
+      width: unit * 3.5,
+      height: unit * 4,
+      top: minTopMargin,
+      left: minLeftMargin + unit * 3,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(unit / 2),
+      ),
+    ),
+    shape2: ShapeConfiguration(
+      width: unit * 2,
+      height: unit * 2,
+      top: minTopMargin + unit * 2,
+      left: minLeftMargin + unit * 4.5,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(unit / 2),
+      ),
+    ),
+    shape3: ShapeConfiguration(
+      width: unit,
+      height: unit,
+      top: minTopMargin + unit * 3,
+      left: minLeftMargin + unit * 5.5,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(unit / 2),
+      ),
+    ),
+    shape4: ShapeConfiguration(
+      width: unit * 2,
+      height: unit * 2,
+      top: minTopMargin,
+      left: minLeftMargin + unit,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(unit / 2),
+      ),
+    ),
+    shape5: ShapeConfiguration(
+      width: unit * 2,
+      height: unit * 2,
+      top: minTopMargin + unit * 2,
+      left: minLeftMargin,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(unit / 2),
+      ),
+    ),
+    shape6: ShapeConfiguration(
+      width: unit,
+      height: unit * 2,
+      top: minTopMargin + unit * 2,
+      left: minLeftMargin + unit * 2,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(unit / 2),
+      ),
+    ),
+    shape7: ShapeConfiguration(
+      width: unit,
+      height: unit * 2,
+      top: minTopMargin,
+      left: minLeftMargin,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(unit / 2),
+      ),
+    ),
+  );
 
   final figure6 = FigureConfiguration(
-      ShapeConfiguration(
-          width * 3.5,
-          width * 4,
-          minTopMargin,
-          minLeftMargin + width * 3,
-          RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-            topRight: Radius.circular(width * 1.5),
-          ))),
-      ShapeConfiguration(
-          width * 2,
-          width * 2,
-          minTopMargin + width * 2,
-          minLeftMargin + width * 4.5,
-          RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(width),
-          ))),
-      ShapeConfiguration(
-          width,
-          width,
-          minTopMargin + width * 3,
-          minLeftMargin + width * 5.5,
-          RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(width / 2),
-          ))),
-      ShapeConfiguration(width * 2, width * 2, minTopMargin,
-          minLeftMargin + width, const CircleBorder()),
-      ShapeConfiguration(
-          width * 2,
-          width * 2,
-          minTopMargin + width * 2,
-          minLeftMargin,
-          RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-            topRight: Radius.circular(width),
-            bottomRight: Radius.circular(width),
-          ))),
-      ShapeConfiguration(
-          width,
-          width * 2,
-          minTopMargin + width * 2,
-          minLeftMargin + width * 2,
-          RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(width),
-          ))),
-      ShapeConfiguration(
-          width,
-          width * 2,
-          minTopMargin,
-          minLeftMargin,
-          RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(width),
-          ))));
+    shape1: ShapeConfiguration(
+      width: unit * 3.5,
+      height: unit * 4,
+      top: minTopMargin,
+      left: minLeftMargin + unit * 3,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topRight: Radius.circular(unit * 1.5),
+        ),
+      ),
+    ),
+    shape2: ShapeConfiguration(
+      width: unit * 2,
+      height: unit * 2,
+      top: minTopMargin + unit * 2,
+      left: minLeftMargin + unit * 4.5,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(unit),
+        ),
+      ),
+    ),
+    shape3: ShapeConfiguration(
+      width: unit,
+      height: unit,
+      top: minTopMargin + unit * 3,
+      left: minLeftMargin + unit * 5.5,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(unit / 2),
+        ),
+      ),
+    ),
+    shape4: ShapeConfiguration(
+      width: unit * 2,
+      height: unit * 2,
+      top: minTopMargin,
+      left: minLeftMargin + unit,
+      shape: const CircleBorder(),
+    ),
+    shape5: ShapeConfiguration(
+      width: unit * 2,
+      height: unit * 2,
+      top: minTopMargin + unit * 2,
+      left: minLeftMargin,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topRight: Radius.circular(unit),
+          bottomRight: Radius.circular(unit),
+        ),
+      ),
+    ),
+    shape6: ShapeConfiguration(
+      width: unit,
+      height: unit * 2,
+      top: minTopMargin + unit * 2,
+      left: minLeftMargin + unit * 2,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(unit),
+        ),
+      ),
+    ),
+    shape7: ShapeConfiguration(
+      width: unit,
+      height: unit * 2,
+      top: minTopMargin,
+      left: minLeftMargin,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(unit),
+        ),
+      ),
+    ),
+  );
 
   final List<FigureConfiguration> figures = [];
   figures.addAll([figure1, figure2, figure3, figure4, figure5, figure6]);

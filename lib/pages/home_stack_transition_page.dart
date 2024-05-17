@@ -168,7 +168,7 @@ class _HomeStackTransitionPageState extends State<HomeStackTransitionPage> {
   }
 
   void startTimer() {
-    _timer = Timer.periodic(const Duration(seconds: 4), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 2), (timer) {
       if (!_shouldMorph) return;
       int randomIndex = Random().nextInt(figures.length);
       config = figures[randomIndex];

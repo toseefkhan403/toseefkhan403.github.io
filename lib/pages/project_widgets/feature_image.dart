@@ -84,10 +84,10 @@ class FeatureImage extends StatelessWidget {
                 text: 'EcoShift Chronicles',
                 link: 'https://devpost.com/software/ecoshift-chronicles',
               ),
-              HyperlinkText(text: ' is one of the top 20 projects of the '),
+              HyperlinkText(text: ' is the winner of the '),
               HyperlinkText(
                   text: 'Global Gamers Challenge',
-                  link: 'https://youtu.be/AqCMFhb2wrA?si=erygKGRQGF0Wdtee'),
+                  link: 'https://youtu.be/_GgqdB9md1w?si=rcJhCbsishY2NwBJ'),
               HyperlinkText(
                   text:
                       ' organised by Flutter. The game places the power of choice in your hands, reshaping the world based on your decisions. The player encounters dilemmas mirroring real-life choices, with changing storyline.'),
