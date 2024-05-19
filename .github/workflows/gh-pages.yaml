@@ -15,13 +15,13 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.19.0'
+          flutter-version: '3.22.0'
           channel: 'stable'
 
       - name: Build and Deploy to GitHub Pages
         run: |
           flutter config --enable-web
-          flutter build web --release --web-renderer=auto
+          flutter build web --release --wasm
           git config user.name github-actions
           git config user.email github-actions@github.com
           mv build/web/assets/assets/* build/web/assets
