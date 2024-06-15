@@ -156,10 +156,11 @@ class _HomeStackTransitionPageState extends State<HomeStackTransitionPage> {
               onTap: () => animateToProjectDetailPage(
                   section, color, initialColor, shape.shape),
               child: ClipPath(
-                  clipper: ShapeBorderClipper(shape: shape.shape),
-                  child: HoverText(
-                      visibleText: section.name.toUpperCase(),
-                      textColor: initialColor)),
+                clipper: ShapeBorderClipper(shape: shape.shape),
+                child: HoverText(
+                    visibleText: section.name.toUpperCase(),
+                    textColor: initialColor),
+              ),
             ),
           ),
         ),

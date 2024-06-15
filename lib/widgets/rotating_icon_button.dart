@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 
@@ -21,6 +23,7 @@ class _RotatingIconButtonState extends State<RotatingIconButton> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
     return AnimatedRotation(
       turns: turns,
       duration: Duration(milliseconds: widget.isLeft ? 500 : 900),
@@ -37,8 +40,8 @@ class _RotatingIconButtonState extends State<RotatingIconButton> {
           },
           icon: Icon(
             FeatherIcons.plus,
-            size: 32,
-            color: widget.textColor.withOpacity(0.25),
+            size: max(32, width * 0.023),
+            color: widget.textColor.withOpacity(0.5),
           )),
     );
   }

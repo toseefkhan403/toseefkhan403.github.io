@@ -6,7 +6,8 @@ class HoverText extends StatefulWidget {
 
   const HoverText({
     super.key,
-    required this.visibleText, required this.textColor,
+    required this.visibleText,
+    required this.textColor,
   });
 
   @override
@@ -30,19 +31,20 @@ class _HoverTextState extends State<HoverText> {
         });
       },
       child: AnimatedSwitcher(
-          duration: const Duration(milliseconds: 300),
-          child: _isHovered
-              ? Text(
-                  widget.visibleText,
-                  // key: ValueKey('visibleText'),
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: widget.textColor,
-                      fontSize: MediaQuery.of(context).size.shortestSide,
-                      height: 0.8),
-                  textAlign: TextAlign.left,
-                )
-              : const SizedBox.shrink()),
+        duration: const Duration(milliseconds: 300),
+        child: _isHovered
+            ? Text(
+                widget.visibleText,
+                // key: ValueKey('visibleText'),
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: widget.textColor,
+                    fontSize: MediaQuery.of(context).size.shortestSide,
+                    height: 0.8),
+                textAlign: TextAlign.left,
+              )
+            : const SizedBox.shrink(),
+      ),
     );
   }
 }

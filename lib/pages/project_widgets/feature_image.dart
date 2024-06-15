@@ -304,7 +304,7 @@ class FeatureImage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 8),
                 child: Text(
-                  "I'm an experienced mobile developer with a three-year background specializing in Flutter. My passion lies in creating applications that are not only functional but also elegant and user-friendly. With expertise in Flutter, I've successfully developed high-performance cross-platform apps which you can find in this portfolio. This portfolio is also built using Flutter and it draws design inspiration from Karina Sirqueira.",
+                  "I'm an experienced mobile developer with a three-year background specializing in Flutter. My passion lies in creating applications that are not only functional but also elegant and user-friendly. With expertise in Flutter, I've successfully developed high-performance cross-platform apps which you can find in this portfolio.",
                   style: TextStyle(color: textColor, fontSize: 16),
                 ),
               ),
