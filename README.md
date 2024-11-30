@@ -4,7 +4,8 @@
 
 Welcome to my portfolio project, developed with Flutter. The design inspiration for this project comes
 from Karina Sirqueira. The main page features an attractive layout, utilizing a Stack and implicit
-animations to animate shapes seamlessly.
+animations to animate shapes seamlessly.\
+If you're curious about how I built it, check out my detailed Medium blog [here](https://medium.com/@toseefkhan401/flutter-ui-challenge-animating-shapes-and-their-position-in-flutter-6e2507aad046)!
 
 ## Features
 
