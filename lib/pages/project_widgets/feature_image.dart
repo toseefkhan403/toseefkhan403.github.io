@@ -293,7 +293,7 @@ class FeatureImage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8),
                 child: Text(
-                  "Hi, I am Toseef Ali Khan, a Mobile App Developer at Zeeve"
+                  "Hi, I am Toseef Ali Khan, a Mobile App Developer at CRED"
                       .toUpperCase(),
                   style: TextStyle(
                       fontWeight: FontWeight.w600,
@@ -304,7 +304,7 @@ class FeatureImage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 8),
                 child: Text(
-                  "I'm an experienced mobile developer with a three-year background specializing in Flutter. My passion lies in creating applications that are not only functional but also elegant and user-friendly. With expertise in Flutter, I've successfully developed high-performance cross-platform apps which you can find in this portfolio.",
+                  "I'm an experienced mobile developer with a four-year background specializing in Flutter. My passion lies in creating applications that are not only functional but also elegant and user-friendly. With expertise in Flutter, I've successfully developed high-performance cross-platform apps which you can find in this portfolio.",
                   style: TextStyle(color: textColor, fontSize: 16),
                 ),
               ),
